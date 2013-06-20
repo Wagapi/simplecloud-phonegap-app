@@ -1,0 +1,1303 @@
+<!DOCTYPE html> 
+<html> 
+	<head> 
+	<title>Wagapi</title> 
+	<meta name="viewport" content="width=device-width, initial-scale=1"> 
+	<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+	<!-- 
+	<link rel="stylesheet" href="wgp/css/jquery.fileupload-ui.css">
+	-->	
+
+	<script type="text/javascript" charset="utf-8" src="phonegap-1.3.0.js"></script>
+	<link rel="stylesheet" href="wgp/css/ui-lightness/jquery-ui-1.8.16.custom.css">
+	
+	<link rel="stylesheet" href="wgp/jquery.mobile-1.0/jquery.mobile-1.0.min.css" />	
+	
+	<link rel="stylesheet" href="wgp/mobile/css/enhanced.css" />
+
+
+	<style>
+	.ui-autocomplete-loading { background: white url('wgp/css/ui-anim_basic_16x16.gif') right center no-repeat; }
+	.ui-bar, .ui-body {padding-right: 0px; padding-left: 0px;}
+	</style>	
+
+	<script type="text/javascript" src="wgp/scr/jquery-1.7.1.min.js"></script>
+	<script src="wgp/scr/jquery.tmpl.min.js"></script>	
+	<script src="wgp/scr/jquery-ui-1.8.16.custom.min.js"></script>
+
+	<script type="text/javascript" src="wgp/jquery.mobile-1.0/jquery.mobile-1.0.min.js"></script>
+	<script src="wgp/scr/w_api.js" type="text/javascript"></script>
+	<script src="wgp/scr/w_scr.js" type="text/javascript"></script>	
+	<script src="wgp/mobile/scr/mobile.wgp.js"></script>
+		
+	<script src="wgp/mobile/scr/jQuery.fileinput.js"></script>
+
+</head> 
+<body> 
+
+
+
+<!-- Start of first page: #one -->
+<div data-role="page" id="login-box">
+
+	<div data-role="header">
+		<h1>Welcome on Wagapi !</h1>
+	</div><!-- /header -->
+
+	<div data-role="content">	
+		<p style="text-align:center;">
+			<img src="wgp/rsc/dgn/mobile.wgp.logo.png" style="max-width:100%">
+		</p>
+					<div class="message-auth" style="text-align:center; color:red">
+					</div>		
+		<form action="javascript:auth();" method="POST" >
+			<fieldset>
+					<div data-role="fieldcontain">
+						 <label for="user">User</label>
+						 <input type="text" name="user" id="user" value="" maxlength="20" />
+					</div>
+					<div data-role="fieldcontain">
+						 <label for="password">Password:</label>
+						 <input type="password" name="password" id="password" value="" maxlength="20"/>
+					</div>
+					<input type="submit" data-role = "button" data-theme="a" id="login" value = "Log in">	
+	
+			</fieldset>
+		</form>
+	</div><!-- /content -->
+	
+	<div data-role="footer" data-theme="d">
+		<h4>Copyright (c) 2010-2011 Wagapi - Test Version 0.32</h4>
+	</div><!-- /footer -->
+</div><!-- /page one -->
+
+<!-- ######################################################################################### -->
+<!-- Start of home-box page: #home-box -->
+<div data-role="page" id="home-box">
+	
+	<div data-role="header">
+		<a href="#bug-box" data-role="button" data-icon="alert" >Report bug</a>	
+		<h1>@wagapi</h1>
+		<a href="javascript:unauth();" data-role="button" data-icon="gear" class="ui-btn-right">Disconnect</a>
+		<div data-role="navbar">
+			<ul>
+				<li><a href="#home-box" class="wgp-mail-box ui-btn-active ui-state-persist" data-icon="home">Home</a></li>
+				<li><a href="#mail-box" class="wgp-mail-box " data-icon="star">Messages</a></li>
+				<li><a href="#doc-box" class="wgp-doc-box " data-icon="search">Search</a></li>
+				<li><a href="#file-box" class="wgp-file-box" data-icon="grid">Files</a></li>					
+				<li><a href="#menu-box" class="wgp-menu-box" data-icon="arrow-u">Upload</a></li>
+			</ul>
+		</div><!-- /navbar -->
+		
+	</div><!-- /header -->
+
+	<div data-role="content" >	
+		<div class="content-primary">
+			<h3>Wagapi's quick howto</h3>
+			<p>
+			Wagapi is a service designed to help you store, retrieve and share documents of any kind with people using Wagapi, as well as with people outside of the platform. It can be accessed from anywhere Here are a few concepts and advices that will help you get the best of it.
+			</p>
+			<ul>
+				<li>
+					<h4>Adding documents</h4>
+					<p>
+					There are several ways to add files to your personal space : when you are logged on the service, you can drag & drop documents anywhere in the window, or use the "Add files" button of the upload page. Friends and contacts can also send to you any amount of documents that will land directly in your personal document vault. 
+					</p>
+				</li>
+				<li>
+					<h4>Sorting your documents</h4>
+					<p>
+					Wagapi takes advantage of the "tree view" sorting method available on traditional computers, and enhances it : you don't need to nest repositories under each other. Simply sort your documents by adding them to the muliple relevant repositories. This is easily done by selecting them on the "Files" page, and click "Actions" then "Sort".
+					</p>
+					<p>
+					You will be able to navigate through the repositories thanks to the "Search" interface, located on the "Search" page.
+					</p>				
+				</li>	
+				<li>
+					<h4>Sharing your documents</h4>
+					<p>
+					You can easily share you documents by selecting  them on the "Files" page, and clicking "Actions" then "Send". The send interface works like an email service. Recipients can be designated by their pseudonym if they have a wagapi account, or by their usual email address. Recipients must be separated by commas. (eg. example1@hotmail.com, pseudo, ...)
+					</p>
+					<p>
+					Wagapi users will get their message on the "Message" page.
+					External recipients will receive an email with an additional link relating to a preformated webpage where they can access all shared documents, for a period of one week.
+					</p>
+					<p>
+					There is virtually no limit to the size of documents that can be sent in a single message.
+					</p>		
+				</li>				
+				<li>
+					<h4>Receiving and sending presorted documents</h4>
+					<p>
+					Since there is no reason not to take advantage of the work done once, it is possible to preserve sorting information when sending documents to people using the Wagapi service.
+					</p>
+					<p>
+					Users can choose which information they accept to share when composing their message. The default behaviour is to send all sorting information.
+					</p>				
+					<p>
+					Users who receive documents with sorting information will find them directly sorted in their document collection. They can update these sorting information according to their own preferences.
+					</p>					
+				</li>	
+				<li>
+					<h4>Sending feedbacks</h4>
+					<p>
+					We need your feedbacks to improve the service. You can report bugs or make comments by clicking on the alert icon in the top left hand corner of the window.
+					</p>					
+				</li>					
+			</ul>				
+			<h3>Known bugs</h3>
+			<ul style="list-style-type:none">
+				<li>
+					<h4>Adding files</h4>
+					<ul>
+						<li> The "Add files" button is known not to work under Chromium and Firefox at the time being. This is being investigated.
+						</li>
+					</ul>	
+				</li>
+			</ul>						
+			<h3>Latest news</h3>
+			<ul style="list-style-type:none">
+				<li>
+					<h4>Update from January 30, 2011</h4>
+					<ul>
+						<li> You can now report bugs by clicking on the alert icon in the top left hand corner of the window. Simply fill in the form and send !
+						</li>
+						<li> Files added to your collection are now compared to your existing data. If a file is similar, byte per byte, in terms of name and extension, then it will not be duplicated. Instead, any reference to it will reference your original file. Thus to avoid multiple copies of a same document in your collection.
+						</li>						
+					</ul>	
+				</li>
+			</ul>			
+		</div><!--/content-primary -->	
+	</div><!-- /content -->
+	
+	<div data-role="footer" data-theme="d"  >
+		<h4>Test Version 0.32</h4>
+	</div><!-- /footer -->
+</div><!-- /page one -->
+
+
+<!-- ######################################################################################### -->
+<!-- Start of mail-box page: #mail-box -->
+<div data-role="page" id="mail-box">
+	
+	<div data-role="header"  >
+		<a href="#bug-box" data-role="button" data-icon="alert" >Report bug</a>	
+		<h1>@wagapi</h1>
+		<a href="javascript:unauth();" data-role="button" data-icon="gear" class="ui-btn-right">Disconnect</a>
+		<div data-role="navbar">
+			<ul>
+				<li><a href="#home-box" class="wgp-mail-box" data-icon="home">Home</a></li>
+				<li><a href="#mail-box" class="wgp-mail-box ui-btn-active ui-state-persist" data-icon="star">Messages</a></li>
+				<li><a href="#doc-box" class="wgp-doc-box " data-icon="search">Search</a></li>
+				<li><a href="#file-box" class="wgp-file-box" data-icon="grid">Files</a></li>					
+				<li><a href="#menu-box" class="wgp-menu-box" data-icon="arrow-u">Upload</a></li>
+			</ul>
+		</div><!-- /navbar -->
+		
+	</div><!-- /header -->
+
+	<div data-role="content" >	
+		<div class="content-primary">
+			<ul id ="in-box" data-role="listview" data-theme="c" data-insert="true">	
+			</ul>
+		</div><!--/content-primary -->	
+	</div><!-- /content -->
+	
+	<div data-role="footer" data-theme="d"  >
+		<h4>Test Version 0.32</h4>
+	</div><!-- /footer -->
+</div><!-- /page one -->
+
+<!-- ######################################################################################### -->
+<!-- Start of doc-box page: #doc-box -->
+
+<div data-role="page" id="doc-box">
+
+	<div data-role="header"  >
+	<a href="#bug-box" data-role="button" data-icon="alert" >Report bug</a>	
+		<h1>@wagapi</h1>
+		<a href="javascript:unauth();" data-role="button" data-icon="gear" class="ui-btn-right">Disconnect</a>
+		<div data-role="navbar">
+			<ul>
+				<li><a href="#home-box" class="wgp-mail-box" data-icon="home">Home</a></li>
+				<li><a href="#mail-box" class="wgp-mail-box" data-icon="star">Messages</a></li>
+				<li><a href="#doc-box" class="wgp-doc-box  ui-btn-active ui-state-persist" data-icon="search">Search</a></li>
+				<li><a href="#file-box" class="wgp-file-box" data-icon="grid">Files</a></li>					
+				<li><a href="#menu-box" class="wgp-menu-box" data-icon="arrow-u">Upload</a></li>
+			</ul>
+		</div><!-- /navbar -->
+	</div><!-- /header -->
+
+	<div data-role="content" >	
+		<form id="tag-search" action="void(0);" method="POST">
+			<div data-role="fieldcontain">
+				<label for="q_tag"></label>
+				<input type="text" name="tags" id="q_tag" value="" autocomplete=off />
+			</div>
+		</form>
+		<div>
+			<h4>
+			<a href="#" data-role="button" data-icon="arrow-r" data-iconpos="right"  id="doc-access-results" data-theme="e">
+				<span id="doc-box-results-count"></span> files match your request - Access files
+			</a>
+			</h4>
+			</br>
+		</div>
+		<div class="content-primary">
+			<ul id ="doc-list" data-role="listview" data-theme="c" data-inset="true">	
+			</ul>
+		</div><!--/content-primary -->	
+	</div><!-- /content -->
+	
+	<div data-role="footer" data-theme="d"   class="ui-bar">
+		<a href="#" data-role="button" data-icon="arrow-r" data-type="horizontal" id="doc-btn-next" >Next</a>
+	</div><!-- /footer -->
+</div><!-- /page one -->
+
+<!-- ######################################################################################### -->
+<!-- Start of doc-box page: #file-box -->
+
+<div data-role="page" id="file-box">
+
+	<div data-role="header"  >
+		<a href="#bug-box" data-role="button" data-icon="alert" >Report bug</a>	
+		<h1>@wagapi</h1>
+		<a href="javascript:unauth();" data-role="button" data-icon="gear" class="ui-btn-right">Disconnect</a>
+		<div data-role="navbar">
+			<ul>
+				<li><a href="#home-box" class="wgp-mail-box" data-icon="home">Home</a></li>
+				<li><a href="#mail-box" class="wgp-mail-box" data-icon="star">Messages</a></li>
+				<li><a href="#doc-box" class="wgp-doc-box" data-icon="search">Search</a></li>
+				<li><a href="#file-box" class="wgp-file-box ui-btn-active ui-state-persist" data-icon="grid">Files</a></li>				
+				<li><a href="#menu-box" class="wgp-menu-box" data-icon="arrow-u">Upload</a></li>
+			</ul>
+		</div><!-- /navbar -->
+	</div><!-- /header -->
+
+	<div data-role="content" >	
+		<div class="content-primary">
+			<ul id ="file-list" data-role="listview" data-theme="c" data-insert="true">	
+			</ul>
+		</div><!--/content-primary -->	
+	</div><!-- /content -->
+	
+	<div data-role="footer" data-theme="d" data-position="fixed" class="ui-bar" >
+	<div data-role="controlgroup" data-type="horizontal">
+		<a href="#" data-role="button" data-icon="arrow-l" data-type="horizontal" id="file-btn-back" data-iconpos="notext"></a>
+		<a href="#" data-role="button" data-icon="arrow-r" data-type="horizontal" id="file-btn-next" data-iconpos="notext"></a>
+		<a href="#" data-role="button" data-icon="plus" data-type="horizontal" id="file-btn-all" class="doc-select"data-iconpos="notext"></a>
+		<a href="#" data-role="button" data-icon="minus" data-type="horizontal" id="file-btn-unall" class="doc-select" data-iconpos="notext"></a>
+		<a href="#" data-role="button" data-icon="refresh" data-type="horizontal" id="file-btn-reset" data-iconpos="notext"></a>
+		<a href="#action-box" data-rel="dialog" data-role="button" data-icon="gear" data-type="horizontal" id="file-btn-menu" data-iconpos="notext"></a>
+		<a href="#" data-role="button" data-icon="home" data-type="horizontal" id="file-btn-home" data-iconpos="notext"></a>
+	</div>	
+	</div><!-- /footer -->
+</div><!-- /page one -->
+
+<!-- ######################################################################################### -->
+<!-- Start of doc-box page: #menu-box -->
+
+<div data-role="page" id="menu-box">
+
+	<div data-role="header"  >
+		<a href="#bug-box" data-role="button" data-icon="alert" >Report bug</a>	
+		<h1>@wagapi</h1>
+		<a href="javascript:unauth();" data-role="button" data-icon="gear" class="ui-btn-right">Disconnect</a>
+		<div data-role="navbar">
+			<ul>
+				<li><a href="#home-box" class="wgp-mail-box" data-icon="home">Home</a></li>
+				<li><a href="#mail-box" class="wgp-mail-box" data-icon="star">Messages</a></li>
+				<li><a href="#doc-box" class="wgp-doc-box" data-icon="search">Search</a></li>
+				<li><a href="#file-box" class="wgp-file-box" data-icon="grid">Files</a></li>					
+				<li><a href="#menu-box" class="wgp-menu-box ui-btn-active ui-state-persist" data-icon="arrow-u">Upload</a></li>
+			</ul>
+		</div><!-- /navbar -->
+	</div><!-- /header -->
+
+	<div data-role="content" >	
+		<form id="file-upload" target="csr" enctype="multipart/form-data" action="http://www.wagapi.com/wgp/upload2.php" method="POST" data-ajax="false">
+			<p align="center">
+			<input type="file" name="files" id="file-select" data-role="none"/>
+			</p>
+			<input type="submit" name="fileup2" id="file-submit"  data-ajax="false" value="Upload"/>
+		</form>
+		<iframe id="csr" name="csr" height="1" width="1" style="border:0px none;display:none;"></iframe>
+		<form id="picture-sync" action="javascript:sync_pictures();" method="POST" data-ajax="false">
+			<input type="submit" name="Sync"  data-ajax="false" value="Sync"/>
+		</form>	
+		<form id="sync-test" action="javascript:sync_test();" method="POST" data-ajax="false">
+			<input type="submit" name="Sync"  data-ajax="false" value="Sync"/>
+		</form>			
+	</div><!-- /content -->
+	
+	<div data-role="footer" data-theme="d"  >
+		<h4>Test Version 0.3</h4>
+	</div><!-- /footer -->
+</div><!-- /page one -->
+
+<!-- ######################################################################################### -->
+<!-- Action-box section -->
+
+<div data-role="page" id="action-box">
+
+	<div data-role="header"  >
+		<h1>Actions</h1>
+	</div><!-- /header -->
+
+	<div data-role="content" >	
+			<a href="#message-box" data-rel="dialog" data-role="button" data-theme="c">Send selected</a>
+			<a href="#move-box" data-rel="dialog" data-role="button" data-theme="c">Sort selected</a>
+			<a href="#" data-role="button" data-theme="c" id="action-btn-file-delete">Delete selected</a>
+			<a href="#file-box" data-role="button" data-rel="back" data-theme="c" id="action-btn-download">Download selection</a>		
+			<a href="#file-box" data-role="button" data-rel="back" data-theme="c" id="action-btn-select" class="ui-disabled">Select all</a>				
+			<a href="#file-box" data-role="button" data-rel="back" data-theme="c" id="action-btn-reset">Clear selection</a>			
+			<a href="#file-box" data-role="button" data-rel="back" data-theme="c">Cancel</a> 
+	</div><!-- /content -->
+	
+	<div data-role="footer" data-theme="d"  style="padding-left: 0; padding-right: 0; width:100%">
+	</div><!-- /footer -->
+</div><!-- /page one -->
+
+<!-- ######################################################################################### -->
+<!-- Message-box section -->
+
+<div data-role="page" id="message-box">
+
+	<div data-role="header"  >
+		<h1>New message</h1>
+	</div><!-- /header -->
+
+	<div data-role="content" >	
+		<div class="content-primary" data-theme="c">
+			<div data-role="fieldcontain">
+			 <label for="message-to">To </label>
+			 <textarea name="message-content" id="message-to"></textarea>
+			</div>
+			<div data-role="fieldcontain">
+			 <label for="message-about">About</label>
+			 <input type="text" name="message-about" id="message-about" value=""  />
+			</div>
+			<div data-role="fieldcontain">
+			<label for="message-content">Message</label>
+				<textarea name="message-content" id="message-content"></textarea>
+			</div>
+			<p style="text-align:center;"><h3  style='text-align:center;'>Documents sent : <span id="message-doc-count"></span></h3></p>
+			<p style="text-align:center;">
+			<a href="#" data-role="button" data-inline="true" data-rel="back" data-theme="b" id="message-btn-send">Send</a>			
+			<a href="#" data-role="button" data-rel="back" data-inline="true" id="message-btn-cancel">Cancel</a>
+			</p>
+			<h3 style='text-align:center;'>Tags to be sent with :</h3>			
+			<ul id ="message-tags-list" data-role="listview" data-theme="c" data-insert="true">	
+			</ul>
+
+		</div><!--/content-primary -->		
+	</div><!-- /content -->
+	
+	<div data-role="footer" data-theme="d"  >
+	
+	</div><!-- /footer -->
+</div><!-- /page one -->
+
+<!-- ######################################################################################### -->
+<!-- move-box section -->
+
+<div data-role="page" id="move-box">
+
+	<div data-role="header"  >
+		<h1>Sort documents</h1>
+	</div><!-- /header -->
+
+	<div data-role="content" >	
+		<form id="tag-add" action="void(0);" method="POST">
+			<p align="center">
+			<div data-role="fieldcontain">
+				<label for="tag-to-add"></label>
+				<input type="text" name="tags" id="tag-to-add" value="" autocomplete=off />
+			</div>
+			</p>
+		</form>
+		<div class="content-primary" data-theme="c">
+			<ul id ="tag-list" data-role="listview" data-theme="c" data-insert="true">	
+			</ul>
+		</div><!--/content-primary -->		
+	</div><!-- /content -->
+	
+	<div data-role="footer" data-theme="d"  >
+	
+	</div><!-- /footer -->
+</div><!-- /page one -->
+
+<!-- ######################################################################################### -->
+<!-- Detail-box section -->
+
+<div data-role="page" id="detail-box">
+
+	<div data-role="header"  >
+		<h1 id="detail-name">File detail</h1>
+	</div><!-- /header -->
+
+	<div data-role="content" >	
+		<div class="content-primary" data-theme="c">
+				<p style="text-align:center;"><img src="" style="max-width:95%" id="detail-img"></p>
+				<p style="text-align:center;">Type : <span id="detail-type"></span> - Extension : <span id="detail-extension"></span></p>
+				<p style="text-align:center;">Added : <span id="detail-date-in"></span></p>
+				<p style="text-align:center;">Size : <span id="detail-size"></span></p>
+				<a href="#" id ="detail-download-link" class="detail-download-link" data-rel="external" data-role="button" data-icon="arrow-d" data-ajax="false">
+					Download
+				</a>
+		</div><!--/content-primary -->		
+	</div><!-- /content -->
+	
+	<div data-role="footer" data-theme="d"  >
+	
+	</div><!-- /footer -->
+</div><!-- /page one -->
+
+<!-- ######################################################################################### -->
+<!-- Detail-box section -->
+
+<div data-role="page" id="bug-box">
+
+	<div data-role="header"  >
+		<h1 id="detail-name">Bug report</h1>
+	</div><!-- /header -->
+
+	<div data-role="content" >	
+		<div class="content-primary" data-theme="c">
+				<div data-role="fieldcontain">
+					<p style="text-align:center;">
+					<label for="message-content">Please report your bug or make your comment and press "Send"</label>
+					<textarea name="message-content" id="report-content"></textarea>
+					</p>
+				</div>
+			<p style="text-align:center;">
+				<a href="#" data-role="button" data-inline="true" data-rel="back" data-theme="b" id="report-btn-send">Send</a>			
+				<a href="#" data-role="button" data-rel="back" data-inline="true" id="report-btn-cancel">Cancel</a>
+			</p>
+		</div><!--/content-primary -->		
+	</div><!-- /content -->
+	
+	<div data-role="footer" data-theme="d"  >
+	
+	</div><!-- /footer -->
+</div><!-- /page one -->
+</body>
+<!-- ######################################################################################### -->
+<!-- Script section -->
+
+<script id="template-inbox" type="text/x-jquery-tmpl">
+		<li id=inbox-wail-${wail_id} class="inbox"><a href="#">
+			<h3>Received from ${sender} on ${date} : ${num_docs} documents - Shared with ${recipients}</h3>
+				<p>${message}</p>
+		</a></li>
+</script>
+<script id="template-lookup" type="text/x-jquery-tmpl">
+	<li id="list-${id}" class="template-lookup"><a href="#detail-box" data-rel="dialog" class="detail-request" >
+		{{if type=='picture'}}<img src="http://www.wagapi.com/wgp/get.php?action=preview&id=${id}"  alt="picture" title="" />{{/if}}
+		{{if type=='audio'}}<img src="wgp/rsc/dgn/audio.png"  alt="audio" title="" />{{/if}}
+		{{if type=='video'}}<img src="wgp/rsc/dgn/video.png"  alt="movie" title="" />{{/if}}
+		{{if type=='mixed'}}<img src="wgp/rsc/dgn/mixed.png"  alt="document" title="" />{{/if}}
+		{{if type=='undefined'}}<img src="wgp/rsc/dgn/undefined.png"  alt="undefined" title="" />{{/if}}
+		<h3>
+		<div style="max-width:400px;overflow:hidden;text-overflow: ellipsis;-o-text-overflow: ellipsis;"><span class="detail-extension">${extension}</span> - <span class="detail-name" >${name} </span></div>			
+		</h3>
+		<p>
+		Added : <span class="detail-date-in">${date_in}</span>
+		Size : <span class="detail-size">${formatFileSize(size)}</span>
+		Type : <span class="detail-type">${type}</span>
+		<span style="margin-left:150px;">{{each tags}}<span class="ui-li-count" style="padding-left:5px;position:relative"><span class="">${$value}</span></span>{{/each}}</span>
+		</p>	
+		
+	</a>	
+	<a href="#" class="doc-selection doc-unselected" data-icon="plus">
+	Select
+	</a>
+	</li>
+</script>
+<script id="template-rep" type="text/x-jquery-tmpl">
+	<li class="template-rep"><a href="#" >
+		<img src="wgp/rsc/dgn/directory.png"  alt="undefined" title="" class="ui-li-icon" />
+		<h4 style="text-align:center" >${tag}</h4>
+		<p></p>
+	</a></li>
+</script>
+<script id="template-parents" type="text/x-jquery-tmpl">
+	<li class="template-parents" data-icon="delete"><a href="#" >
+		<img src="wgp/rsc/dgn/directory_parent.png"  alt="undefined" title=""  class="ui-li-icon"  />
+		<h4 style="text-align:center" class="search-tag">${tag}</h4>
+		<p></p>
+	</a></li>
+</script>
+<script id="template-set-tags" type="text/x-jquery-tmpl">
+	{{if status=='on'}}
+	<li class="is-tag-on" data-icon= "minus"><a href="#" >
+		<img src="wgp/rsc/dgn/directory_parent.png"  alt="undefined" title="" class="ui-li-icon"  />
+	{{/if}}
+	{{if status=='off'}}
+	<li class="is-tag-off" data-icon= "plus"><a href="#" >
+		<img src="wgp/rsc/dgn/directory.png"  alt="undefined" title="" class="ui-li-icon"  />
+	{{/if}}	
+		<h4 style="text-align:center">${tag}</h4>
+		<p>
+		</p>
+	</a></li>
+</script>
+<script id="template-list-tags" type="text/x-jquery-tmpl">
+	<li class="is-tag-sent-on" data-icon= "minus"><a href="#" >
+		<img src="wgp/rsc/dgn/directory_parent.png"  alt="undefined" title="" class="ui-li-icon"  />
+		<h4 style="text-align:center">${tag}</h4>
+		<p>
+		</p>
+	</a></li>
+</script>
+
+
+<script>
+
+$(document).bind("mobileinit", function(){
+  $.extend(  $.mobile , {
+    pushStateEnabled: false,
+	defaultPageTransition: 'none',
+	defaultDialogTransition : 'none'
+  });
+  $.mobile.allowCrossDomainPages = true;
+});
+
+
+//Initializer selection stored data
+var selection = new Array();
+//var div = $("div#store-selection").first();
+//$.data(div, "store-selection", selection);
+$('body').data("store-selection", selection);
+files_flag_on();
+
+
+$( '#mail-box' ).live( 'pagebeforecreate',function(event){
+ 				channel_request('inbox', '', 'In',function(data){
+					render_inbox(data['inbox']);
+					//$('#mail-box').page();
+					//$('#in-box').trigger('create');
+					$('#in-box').listview('refresh');
+				});
+
+
+});
+
+$( '#doc-box' ).live( 'pageinit',function(event){
+$('#q_tag').textinput();
+ 
+ $(function(){
+ 		function split( val ) {
+			return val.split( /\s+/ );
+		}
+		function extractLast( term ) {
+			return split( term ).pop();
+		}
+ 
+ 		$( "#q_tag" )
+			// don't navigate away from the field on tab when selecting an item
+			.bind( "keydown", function( event ) {
+				if ( event.keyCode === $.ui.keyCode.TAB &&
+						$( this ).data( "autocomplete" ).menu.active ) {
+					event.preventDefault();
+				}
+			})
+			.autocomplete({
+				source: function( request, response ) {
+					var term = extractLast( request.term );
+					channel_request('autocomplete', term, '',function(data){
+						response(data['autocomplete']);
+						//$('#q_tag').textinput('refresh');
+						//console.log(response);
+					});
+				},
+				search: function() {
+					// custom minLength
+					var term = extractLast( this.value );
+					if ( term.length < 2 ) {
+						return false;
+					}
+				},
+				focus: function() {
+					// prevent value inserted on focus
+					return false;
+				},
+				select: function( event, ui ) {
+					var terms = split( this.value );
+					// remove the current input
+					terms.pop();
+					// add the selected item
+					terms.push( ui.item.value );
+					// add placeholder to get the comma-and-space at the end
+					terms.push( "" );
+					this.value = terms.join( " " );
+					return false;
+				}
+			});
+		});
+$('#doc-box').page();
+});
+
+
+$( '#menu-box' ).live( 'pageinit',function(event){
+	$(function(){
+			$('#file-select').customFileInput();	
+	});
+	$('#file-select').trigger('enable');
+	files_flag_on(); //to force page refresh of the files section in case of upload
+});
+
+$("#tag-search").submit(function(event){
+	event.preventDefault();
+		var tags = $("#q_tag").attr('value');
+		if(tags){
+		channel_request('lookup', tags, '',function(data){
+			$("#doc-list").empty();
+			render_parents(data['tv_parents']);
+			render_rep(data['treeview']);
+			$("#doc-box-results-count").text(data['browse_results']['count']);
+			//render_lookup(data['lookup']);
+			var tags = $("#q_tag").attr('value',''); //clears the text field
+			$('#doc-list').listview('refresh');
+		});	
+		}
+//	lookup();
+	//$('#doc-box').page();
+	//$('#doc-list').trigger('create');
+	//$('#doc-list').listview('refresh');
+	event.stopPropagation();
+});
+
+$( '.template-rep' ).live( 'click',function(event){
+	event.preventDefault();
+		var tags_undecoded = $(this).find("h4").first().text();
+		var tags = tags_undecoded;
+		//console.log(tags_undecoded);
+		//var tags = decode_utf8(tags_undecoded);
+		channel_request('lookup', tags, 'add_tag',function(data){
+			$("#doc-list").empty();
+			render_parents(data['tv_parents']);
+			render_rep(data['treeview']);
+			$("#doc-box-results-count").text(data['browse_results']['count']);
+			//render_lookup(data['lookup']);
+			$('#doc-list').listview('refresh');
+		});	
+});
+
+$( '.template-parents' ).live( 'click',function(event){
+	event.preventDefault();
+		var tags_undecoded = $(this).find("h4").first().text();
+		var tags = tags_undecoded;
+		//console.log(tags_undecoded);
+		//var tags = decode_utf8(tags_undecoded);
+		channel_request('lookup', tags, 'rem_tag',function(data){
+			$("#doc-list").empty();
+			render_parents(data['tv_parents']);
+			render_rep(data['treeview']);
+			$("#doc-box-results-count").text(data['browse_results']['count']);
+			//render_lookup(data['lookup']);
+			$('#doc-list').listview('refresh');
+		});	
+});
+/*
+$( '#file-box' ).live( 'pagebeforeshow',function(event){
+ 				channel_request('browse_results', 'start', '',function(data){
+					render_browse_results(data['browse_results']);
+					//$('#mail-box').page();
+					//$('#file-list').listview();
+					$('#file-list').listview('refresh');
+				});
+});
+*/
+//modifié en pagebeforecreate
+$( '#file-box' ).live( 'pagebeforeshow',function(event){
+	if(is_file_flag_on()){
+		channel_request('browse_results', 'start', 'reset',function(data){
+			render_browse_results(data['browse_results']);
+			if(data['browse_results']['back_is_over']==1){$('#file-btn-back').addClass('back-is-over');}else{$('#file-btn-back').removeClass('back-is-over');}
+			if(data['browse_results']['next_is_over']==1){$('#file-btn-next').addClass('ui-disabled');}else{$('#file-btn-next').removeClass('ui-disabled');}	
+			$('#file-list').listview('refresh');
+			files_flag_off();
+		});	
+	}else if(is_files_flag_refresh_on()){
+		channel_request('browse_results', 'refresh', '',function(data){
+			render_browse_results(data['browse_results']);
+			if(data['browse_results']['back_is_over']==1){$('#file-btn-back').addClass('back-is-over');}else{$('#file-btn-back').removeClass('back-is-over');}
+			if(data['browse_results']['next_is_over']==1){$('#file-btn-next').addClass('ui-disabled');}else{$('#file-btn-next').removeClass('ui-disabled');}	
+			$('#file-list').listview('refresh');
+			files_flag_refresh_off();
+			refresh_lv_elements();
+		});	
+	}else {
+		$('#file-list').listview('refresh');	
+		refresh_lv_elements();
+	}
+});
+/*
+$( '#file-box' ).live( 'pagecreate',function(event){
+	channel_request('browse_results', 'start', '',function(data){
+		render_browse_results(data['browse_results']);
+		if(data['browse_results']['back_is_over']==1){$('#file-btn-back').addClass('back-is-over');}else{$('#file-btn-back').removeClass('back-is-over');}
+		if(data['browse_results']['next_is_over']==1){$('#file-btn-next').addClass('ui-disabled');}else{$('#file-btn-next').removeClass('ui-disabled');}	
+		$('#file-list').listview('refresh');
+	});
+	//$('#file-list').trigger('create');
+});*/
+/*
+$( '#file-box' ).live( 'pageinit',function(event){
+	$('#file-list').listview('refresh');
+	refresh_lv_elements();
+});
+	*/
+
+$( '#doc-btn-next' ).live( 'click',function(event){
+	event.preventDefault();
+	channel_request('browse_results', 'start', '',function(data){
+		render_browse_results(data['browse_results']);
+		//$('#mail-box').page();
+		//$('#file-list').listview();
+		//$('#file-list').listview('refresh');
+	$.mobile.changePage( $('#file-box'));	
+	if(data['browse_results']['back_is_over']==1){$('#file-btn-back').addClass('back-is-over');}else{$('#file-btn-back').removeClass('back-is-over');}
+	if(data['browse_results']['next_is_over']==1){$('#file-btn-next').addClass('ui-disabled');}else{$('#file-btn-next').removeClass('ui-disabled');}	
+	});
+});
+$( '#file-btn-back' ).live( 'click',function(event){
+	event.preventDefault();
+	if($('#file-btn-back').hasClass('back-is-over')){
+		$.mobile.changePage( $('#doc-box'));
+	}else{
+		channel_request('browse_results', 'back', '',function(data){
+			render_browse_results(data['browse_results']);
+			//$('#mail-box').page();
+			//$('#file-list').listview();
+			$('#file-list').listview('refresh');
+		//$.mobile.changePage( $('#file-box'));		
+		if(data['browse_results']['back_is_over']==1){$('#file-btn-back').addClass('back-is-over');}else{$('#file-btn-back').removeClass('back-is-over');}
+		if(data['browse_results']['next_is_over']==1){$('#file-btn-next').addClass('ui-disabled');}else{$('#file-btn-next').removeClass('ui-disabled');}
+		refresh_lv_elements();
+		});
+	}
+});
+$( '#file-btn-next' ).live( 'click',function(event){
+	event.preventDefault();
+	channel_request('browse_results', 'next', '',function(data){
+		render_browse_results(data['browse_results']);
+		//$('#mail-box').page();
+		//$('#file-list').listview();
+		$('#file-list').listview('refresh');
+		if(data['browse_results']['back_is_over']==1){$('#file-btn-back').addClass('back-is-over');}else{$('#file-btn-back').removeClass('back-is-over');}
+		if(data['browse_results']['next_is_over']==1){$('#file-btn-next').addClass('ui-disabled');}else{$('#file-btn-next').removeClass('ui-disabled');}
+	//$.mobile.changePage( $('#file-box'));		
+		refresh_lv_elements();
+	});
+});
+
+$( '#doc-box' ).live( 'pagebeforecreate',function(event){
+		channel_request('lookup', '', '',function(data){
+			//$("#doc-list").empty();
+			render_parents(data['tv_parents']);
+			render_rep(data['treeview']);
+			$("#doc-box-results-count").text(data['browse_results']['count']);
+			//render_lookup(data['lookup']);
+			$('#doc-list').listview('refresh');
+		});	  
+});
+
+$('.inbox').live('click',function(event){
+	event.preventDefault();
+	var e = $(this).attr('id');
+	//console.log(e);
+	var wail_id = e.substring(11);
+	//console.log(wail_id);
+	channel_request('lookup', wail_id, 'wail_docs',function(data){
+		//render_lookup(data['lookup']);
+		//render_tagbox(data['tagbox']);
+		//render_alltagbox(data['alltagbox']);
+		files_flag_off();		
+		$( '#doc-btn-next' ).click();
+	});
+});
+
+//Manage click events to add or remove document to the current selection
+$('.doc-selection').live('click',function(event){
+	event.preventDefault();
+	var e = $(this).parents("li").first().attr('id');
+	var doc_id = e.substring(5);
+//	console.log(doc_id);
+//	var div = $("div#store-selection").first();
+//	var stored_selection = $.data(div, "store-selection");
+	var stored_selection = $('body').data("store-selection");
+//	console.log(stored_selection);
+	if(stored_selection){selection = stored_selection}else{selection = new Array();}
+	if($(this).hasClass("doc-unselected")){
+		selection.push(doc_id);
+		toggle_lv_style($(this).parents('li').first(),'unselected');
+	}else{
+		for(var i=0; i<selection.length;i++ ){ 
+			if(selection[i]==doc_id){selection.splice(i,1);}
+		} 
+		toggle_lv_style($(this).parents('li').first(),'selected');
+	}
+
+$('body').data("store-selection", selection);
+
+});
+
+
+$( '#file-btn-all-old' ).live( 'click',function(event){
+	event.preventDefault();
+	var selection = new Array();
+	if($(this).hasClass('doc-unselect')){
+		$('#file-list').children('li').each(function(){
+		toggle_lv_style($(this),'selected');
+		});		
+		$(this).addClass("doc-select");
+		$(this).removeClass("doc-unselect");
+	}else{
+		$('#file-list').children('li').each(function(){
+			e = $(this).attr('id');
+			doc_id = e.substring(5);
+			selection.push(doc_id);
+			toggle_lv_style($(this),'unselected');
+		});
+		$(this).addClass("doc-unselect");
+		$(this).removeClass("doc-select");
+		
+	}
+	$('body').data("store-selection", selection);
+
+});
+
+$( '#file-btn-all' ).live( 'click',function(event){
+	event.preventDefault();
+	//var selection = new Array();
+	var stored_selection = $('body').data("store-selection");
+	if(stored_selection){selection = stored_selection}else{selection = new Array();}
+		$('#file-list').children('li').each(function(){
+			e = $(this).attr('id');
+			doc_id = e.substring(5);
+			for(var i=0; i<selection.length;i++ ){ 
+				if(selection[i]==doc_id){selection.splice(i,1);}
+			} 
+			selection.push(doc_id);
+			toggle_lv_style($(this),'unselected');
+		});
+	$('body').data("store-selection", selection);
+	//console.log(selection);
+});
+
+$( '#file-btn-unall' ).live( 'click',function(event){
+	event.preventDefault();
+	//var selection = new Array();
+	var stored_selection = $('body').data("store-selection");
+	if(stored_selection){selection = stored_selection}else{selection = new Array();}
+		$('#file-list').children('li').each(function(){
+			e = $(this).attr('id');
+			doc_id = e.substring(5);
+			for(var i=0; i<selection.length;i++ ){ 
+				if(selection[i]==doc_id){selection.splice(i,1);}
+			} 
+		toggle_lv_style($(this),'selected');
+		});		
+	$('body').data("store-selection", selection);
+	//console.log(selection);
+});
+
+//toggles doc listview elements according to their selection status
+function toggle_lv_style(element,prev){
+	style_selected = 'b';
+	style_unselected = 'c';
+	icon_selected = 'minus';
+	icon_unselected = 'plus';
+	if(prev=='unselected'){
+		element.attr('data-theme',style_selected).addClass('ui-btn-up-'+style_selected).removeClass('ui-btn-up-'+style_unselected);
+		var k = element.children('a');
+		k.attr('data-icon',icon_selected).addClass('ui-btn-up-'+style_selected).removeClass('ui-btn-up-'+style_unselected);
+		k.children().children().next().children().children().next().removeClass('ui-icon-'+icon_unselected).addClass('ui-icon-'+icon_selected);	
+		k.addClass("doc-selected").removeClass("doc-unselected");
+		k.children().children().next().attr('data-theme',style_selected);
+		k.attr('data-theme',style_selected);
+		k.addClass('ui-btn-hover-'+style_selected).removeClass('ui-btn-hover-'+style_unselected);
+	}else{
+		element.attr('data-theme',style_unselected).addClass('ui-btn-up-'+style_unselected).removeClass('ui-btn-up-'+style_selected);
+		var k = element.children('a');
+		k.attr('data-icon',icon_unselected).addClass('ui-btn-up-'+style_unselected).removeClass('ui-btn-up-'+style_selected);
+		k.children().children().next().children().children().next().removeClass('ui-icon-'+icon_selected).addClass('ui-icon-'+icon_unselected);	
+		k.addClass("doc-unselected").removeClass("doc-selected");
+		k.children().children().next().attr('data-theme',style_unselected);
+		k.attr('data-theme',style_unselected);
+		k.addClass('ui-btn-hover-'+style_unselected).removeClass('ui-btn-hover-'+style_selected);
+	}
+}
+
+$('#file-btn-reset').live('click',function(event){
+	event.preventDefault();
+	selection = new Array();
+	$('body').data("store-selection", selection);
+	refresh_lv_elements();
+});
+
+$('#action-btn-reset').live('click',function(event){
+	//event.preventDefault();
+	selection = new Array();
+	$('body').data("store-selection", selection);
+	refresh_lv_elements();
+});
+
+/*
+To be implemented - requires a keyword to be sent to the server matching the overall query result and a way to tell the system that all documents, beside those stored, are selected
+$('#action-btn-select').live('click',function(event){
+	//event.preventDefault();
+
+});
+*/
+
+function refresh_lv_elements(){
+	var stored_selection = $('body').data("store-selection");
+	if(stored_selection){selection = stored_selection}else{selection = new Array();}
+		$('#file-list').children('li').each(function(){
+			e = $(this).attr('id');
+			doc_id = e.substring(5);
+			toggle_lv_style($(this),'selected');
+			for(var i=0; i<selection.length;i++ ){ 
+				if(selection[i]==doc_id){toggle_lv_style($(this),'unselected');}
+			} 
+		});	
+}
+
+$("#action-btn-file-delete").live('click',function(event){
+	event.preventDefault();
+	selection = new Array();
+	selection = $('body').data("store-selection");
+	if(selection){
+		channel_request('del_doc', selection, '',function(data){
+			clear_selection();
+			files_flag_on();
+			$.mobile.changePage( $('#file-box'));	
+		});
+	}
+	
+});
+
+function clear_selection(){
+	selection = new Array();
+	$('body').data("store-selection", selection);
+}
+
+function count_selection_elements(){
+	var stored_selection = $('body').data("store-selection");
+	var size = 0;
+	if(stored_selection){size = stored_selection.length;}
+	return size;
+}
+
+function get_selection(){
+	var stored_selection = $('body').data("store-selection");
+	if(stored_selection){selection = stored_selection}else{selection = new Array();}
+	return selection;
+}
+
+function files_flag_on(){
+	$('body').data("files-flag", 1);
+}
+function files_flag_off(){
+	$('body').data("files-flag", 0);
+}
+function is_file_flag_on(){
+	var flag = $('body').data("files-flag");
+	if(flag){if(flag==1){return true;}else{return false;}}
+}
+
+$( '#message-box' ).live( 'pagebeforeshow',function(event){
+	$("#message-doc-count").empty();
+	var count = count_selection_elements();
+	$("#message-doc-count").append(count);
+	channel_request('list_selection_tags', '', '',function(data){
+		render_list_tags(data['list-selection-tags']);
+		$('#message-tags-list').listview('refresh');
+	});
+});
+
+$("#message-btn-send").live('click',function(event){
+	event.preventDefault();
+	var message = $('#message-content').val();
+	//var recipients = $('#message-to').attr('value');
+	var recipients = $('#message-to').val();
+	var about = $('#message-about').val();
+	var args = {};
+	//var args = new Array();
+	args["message"] = message;
+	args["recipients"] = recipients.toLowerCase();
+	args["banned_tags"] = get_msg_tag_buffer();
+	args["about"] = about;	
+	//args = {'message':message,'recipients':recipients};
+	//console.log(args);
+	channel_request('share', args, '',function(data){});
+	//console.log(args);
+	//Clear fields values
+	$('#message-to').val("");
+	$('#message-content').val("");
+	$('#message-about').attr('value','');
+	$('#message-tags-list').empty();
+});
+
+$("#message-btn-cancel").live('click',function(event){
+	event.preventDefault();
+	$('#message-to').val("");
+	$('#message-content').val("");
+	$('#message-about').attr('value','');
+});
+
+$( '#move-box' ).live( 'pagebeforeshow',function(event){
+	channel_request('set_tags', '', '',function(data){
+		render_set_tags(data['set_tags']);
+		$('#tag-list').listview('refresh');
+	});
+});
+
+$(".is-tag-on").live('click',function(event){
+	tags = $(this).find("h4").first().text();
+	channel_request('set_tags', tags, 'del_tag',function(data){
+		render_set_tags(data['set_tags']);
+		$('#tag-list').listview('refresh');
+	});
+	files_flag_refresh_on();
+});
+$(".is-tag-off").live('click',function(event){
+	tags = '"'+$(this).find("h4").first().text() +'"';
+	channel_request('set_tags', tags, 'add_tag',function(data){
+		render_set_tags(data['set_tags']);
+		$('#tag-list').listview('refresh');
+	});
+	files_flag_refresh_on();
+});
+
+$("#tag-add").submit(function(event){
+	event.preventDefault();
+		var tags = $("#tag-to-add").attr('value');
+		if(tags){
+			channel_request('set_tags', tags, 'add_tag',function(data){
+				render_set_tags(data['set_tags']);
+				$('#tag-list').listview('refresh');
+			});	
+		}
+		files_flag_refresh_on();
+	event.stopPropagation();
+});
+
+$( '#move-box' ).live( 'pageinit',function(event){
+	$('#tag-to-add').textinput();
+	$(function(){
+			function split( val ) {
+				return val.split( /\s+/ );
+			}
+			function extractLast( term ) {
+				return split( term ).pop();
+			}
+	 
+			$( "#tag-to-add" )
+				// don't navigate away from the field on tab when selecting an item
+				.bind( "keydown", function( event ) {
+					if ( event.keyCode === $.ui.keyCode.TAB &&
+							$( this ).data( "autocomplete" ).menu.active ) {
+						event.preventDefault();
+					}
+				})
+				.autocomplete({
+					source: function( request, response ) {
+						var term = extractLast( request.term );
+						channel_request('autocomplete', term, '',function(data){
+							response(data['autocomplete']);
+							//$('#q_tag').textinput('refresh');
+							//console.log(response);
+						});
+					},
+					search: function() {
+						// custom minLength
+						var term = extractLast( this.value );
+						if ( term.length < 2 ) {
+							return false;
+						}
+					},
+					focus: function() {
+						// prevent value inserted on focus
+						return false;
+					},
+					select: function( event, ui ) {
+						var terms = split( this.value );
+						// remove the current input
+						terms.pop();
+						// add the selected item
+						terms.push( ui.item.value );
+						// add placeholder to get the comma-and-space at the end
+						terms.push( "" );
+						this.value = terms.join( " " );
+						return false;
+					}
+				});
+			});
+	$('#move-box').page();
+});
+
+$(".is-tag-sent-on").live('click',function(event){
+	$(this).addClass("is-tag-sent-off").removeClass("is-tag-sent-on").attr("data-icon", 'plus');
+	$(this).find('img').first().attr('src',"wgp/rsc/dgn/directory.png");
+	var tag = $(this).find("h4").first().text();
+	add_to_msg_tag_buffer(tag);	
+	$('#message-tags-list').listview('refresh');
+});
+
+$(".is-tag-sent-off").live('click',function(event){
+	$(this).removeClass("is-tag-sent-off").addClass("is-tag-sent-on").attr("data-icon", 'minus');
+	$(this).find('img').first().attr('src',"wgp/rsc/dgn/directory_parent.png");
+	var tag = $(this).find("h4").first().text();
+	rem_from_msg_tag_buffer(tag);	
+	$('#message-tags-list').listview('refresh');
+});
+
+function add_to_msg_tag_buffer(tag){
+	var stored_selection = $('body').data("msg_tag_buffer");
+	if(stored_selection){selection = stored_selection}else{selection = new Array();}
+	selection.pop(tag);
+	$('body').data("msg_tag_buffer",selection);
+}
+
+function rem_from_msg_tag_buffer(tag){
+	var stored_selection = $('body').data("msg_tag_buffer");
+	if(stored_selection){selection = stored_selection}else{selection = new Array();}
+	for(var i=0; i<selection.length;i++ ){ 
+		if(selection[i]==tag){selection.splice(i,1);}
+	} 
+	$('body').data("msg_tag_buffer",selection);
+}
+
+
+function clear_msg_tag_buffer(){
+	selection = new Array();
+	$('body').data("msg_tag_buffer",selection);
+}
+
+function count_msg_tag_buffer(){
+	var stored_selection = $('body').data("msg_tag_buffer");
+	var size = 0;
+	if(stored_selection){size = stored_selection.length;}
+	return size;
+}
+
+function get_msg_tag_buffer(){
+	var stored_selection = $('body').data("msg_tag_buffer");
+	if(stored_selection){selection = stored_selection}else{selection = new Array();}
+	return selection;
+}
+
+
+$("#file-btn-home").live('click',function(event){
+
+	channel_request('browse_results', 'start', 'home',function(data){
+		render_browse_results(data['browse_results']);
+		if(data['browse_results']['back_is_over']==1){$('#file-btn-back').addClass('back-is-over');}else{$('#file-btn-back').removeClass('back-is-over');}
+		if(data['browse_results']['next_is_over']==1){$('#file-btn-next').addClass('ui-disabled');}else{$('#file-btn-next').removeClass('ui-disabled');}	
+		$('#file-list').listview('refresh');
+		files_flag_off();
+	});	
+});
+
+$(".detail-request").live('click',function(event){
+	event.preventDefault();
+	var e = $(this).parents("li").first().attr('id');
+	var doc_id = e.substring(5);
+	var type = $(this).find("span.detail-type").first().text();
+	var date_in = $(this).find("span.detail-date-in").first().text();
+	var size = $(this).find("span.detail-size").first().text();
+	var extension = $(this).find("span.detail-extension").first().text();
+	var name = $(this).find("span.detail-name").first().text();
+	$("#detail-type").text(type);
+	$("#detail-date-in").text(date_in);
+	$("#detail-size").text(size);
+	$("#detail-img").attr('src',"http://www.wagapi.com/wgp/get.php?action=display&id="+ doc_id +"&extension=.jpg");
+	$("#detail-extension").text(extension);
+	$("#detail-name").text(name);
+	$("#detail-download-link").attr("href","http://www.wagapi.com/wgp/get.php?action=download&type=file&doc_id=" + doc_id);
+	set_current_file(doc_id);
+});
+
+$("#action-btn-download").live('click',function(event){
+	channel_request('zip', '', '',function(data){
+		// Create an IFRAME.
+		var iframe = document.createElement("iframe");
+		// This makes the IFRAME invisible to the user.
+		iframe.style.display = "none";
+		iframe.src = "http://www.wagapi.com/wgp/get.php?action=download&type=archive&id=" + data['zip'];
+		// Add the IFRAME to the page. This will trigger a request to GenerateFile now.
+		document.body.appendChild(iframe); 
+	});		
+});
+
+$(document).bind('swiperight',function(event){
+	event.preventDefault();
+	//if(!($('#file-btn-next').hasClass('ui-disabled'))){$( '#file-btn-next' ).click();}
+	event.stopPropagation();	
+});
+$(document).bind('swipeleft',function(event){
+	event.preventDefault();
+	//$( '#file-btn-back' ).click();
+	event.stopPropagation();	
+});
+function set_current_file(doc_id){
+	$('body').data("current-file", doc_id);
+}
+function get_current_file(){
+	doc_id = $('body').data("current-file");
+	return doc_id;
+}
+
+
+$(".tagbox-del-tag").live('click',function(event){
+	event.preventDefault();
+	var e = $(this).parents("li").first().attr('id');
+	var doc_id = e.substring(5);
+	var tag = $(this).find("span.tag-to-delete").first().text();
+	$(this).remove();
+	channel_request('del_tag', tag, doc_id,function(data){});
+	event.stopPropagation();
+});
+
+function files_flag_refresh_on(){
+	$('body').data("files-refresh-flag", 1);
+}
+function files_flag_refresh_off(){
+	$('body').data("files-refresh-flag", 0);
+}
+function is_files_flag_refresh_on(){
+	var flag = $('body').data("files-refresh-flag");
+	if(flag){if(flag==1){return true;}else{return false;}}
+}
+
+$( '#doc-access-results' ).live( 'click',function(event){
+	event.preventDefault();
+	channel_request('browse_results', 'start', '',function(data){
+		render_browse_results(data['browse_results']);
+		
+	$.mobile.changePage( $('#file-box'));	
+	if(data['browse_results']['back_is_over']==1){$('#file-btn-back').addClass('back-is-over');}else{$('#file-btn-back').removeClass('back-is-over');}
+	if(data['browse_results']['next_is_over']==1){$('#file-btn-next').addClass('ui-disabled');}else{$('#file-btn-next').removeClass('ui-disabled');}	
+	});
+});
+
+
+
+$( '#report-btn-send' ).live( 'click',function(event){
+	event.preventDefault();
+	var report = {};
+	report['message'] = $('#report-content').val();
+	channel_request('bug_report', report, '',function(data){
+		$('#report-content').val('');
+	});
+});
+</script>
+
+
+
+
+</html>

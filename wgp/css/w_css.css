@@ -1,0 +1,113 @@
+body{
+	font-family:"arial";
+	font-weight:bold;
+}
+
+img{
+border-width:none;
+
+}
+
+.dropzone {
+	min-height: 50px;
+	background-color: white;
+	border: 1px solid black;
+	margin-top:10px;
+	margin-bottom:10px;
+}
+
+.dzover {
+	min-height: 50px;
+	background-color: #CCFFCC;
+	border: 1px solid black;
+	font-size: x-large;
+	text-align: center;
+	font-weight: bolder;
+	margin-top:10px;
+	margin-bottom:10px;
+}
+
+.banner {
+	min-height: 150px;
+	background-color: white;
+	font-size: 5em;
+	text-align: center;
+}
+
+.d_store {
+	min-height: 150px;
+	background-color: white;
+	border: 1px solid #fbbd0e;
+	font-size:0.875em;
+	cellpadding:0px;
+	cellspacing:0px;
+	border-collapse:collapse;
+}
+
+.q_area {
+	min-height: 0px;
+	background-color: white;
+	border: 1px solid #fbbd0e;
+	font-size:0.875em;
+}
+
+
+.r_area {
+	margin-left:auto;
+	margin-right:auto;
+	width:50%;
+	padding-top:10px;
+	padding-bottom:10px;
+	text-align:center;
+}
+
+.r_results {
+	text-align:center;
+	color:white;
+}
+
+.texta {  
+  font-size: 10px;  
+  background-color: #CCCCCC;  
+  border: 1px solid #666666;  
+	min-height:30px;
+}  
+
+table {
+	width:100%;
+	border:none;
+}
+
+.r_results table, .r_results tr, .r_results  th, .r_results  td { border: none; }
+
+.hbar {
+	background-color: #fbbd0e;
+	min-height: 3px;
+}
+
+
+.d_store  th input:checked + td  {background-color: #CCFFCC; }
+
+th {text-align:left}
+
+
+.list-checkbox{display:none;}
+.lookupbox-del-doc{display:none;}
+
+.thumbnails a {
+    display: block;
+    float: left;
+    margin: 15px;	
+}
+.thumbnails a img {
+    border: 1px solid Black;
+}
+.thumbnails a:hover img {
+    border: 1px solid #AAAAAA;
+}
+
+hr {
+    clear: both;
+}
+
+
